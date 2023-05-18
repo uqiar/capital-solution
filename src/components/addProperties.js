@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext,useState } from "react";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -12,10 +12,22 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import "../css/button.css";
+import MyContext from "../context/appContext";
 
 const defaultTheme = createTheme();
 
 export default function AddProperties() {
+  const appContext = useContext(MyContext);
+  const { state } = appContext;
+  const [form,setForm]=useState({
+    propertyName: "",
+    streetAddress: "",
+    cityZip: "",
+  })
+  const [selectedDst,setSelectedDst]=useState("")
+  const handleChange=(e)=>{
+    setForm({...form,[e.target.name]:e.target.value})
+  }
   return (
     <div style={{ padding: "0px 20px" }}>
       <h4>ADD PROPERTY</h4>
@@ -35,15 +47,21 @@ export default function AddProperties() {
               }}
             >
               <Select
+               
                 labelId="selectDst"
-                // value={age}
+                 //value={age}
                 name="selectDst"
                 // label="Select DST"
                 placeholder="Select DST"
-                // onChange={handleChange}
+               // onChange={(e)=>alert(e.target.value)}
                 fullWidth
               >
-                <MenuItem value={10}>DST One</MenuItem>
+                {
+                  state?.dsts?.map((itm,key)=>(
+                    <MenuItem value={itm?.basicInfo?.legalName} key={"option"+key}>{itm?.basicInfo?.legalName}</MenuItem>
+
+                  ))
+                }
               </Select>
               <TextField
                 size="small"

@@ -11,7 +11,6 @@ const ManageDST = () => {
     let navigate = useNavigate();
 
     const { state } = appContext;
-    console.log("asfsfs", state)
     const style = {
         width: '100%',
         maxWidth: 360,
