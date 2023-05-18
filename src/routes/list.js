@@ -4,6 +4,7 @@ import ManageDST from "../screens/manageDST";
 import ADDDST from "../screens/addDSTs";
 import ManageDstDetails from "../screens/DST-details";
 import ManageProperties from "../screens/manageProperties";
+import AddProperties from "../components/addProperties";
 
 export const RoutingList = [
   {
@@ -36,5 +37,9 @@ export const RoutingList = [
     element: <ManageProperties />,
     is_protected: true,
   },
-  
+  {
+    route: "/addProperties",
+    element: <AddProperties />,
+    is_protected: true,
+  },
 ];
