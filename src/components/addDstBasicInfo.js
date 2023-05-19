@@ -9,6 +9,7 @@ import Card from "@mui/material/Card";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import "../css/button.css";
+import Grid from "@mui/material/Grid";
 
 const defaultTheme = createTheme();
 
@@ -26,9 +27,53 @@ export default function AddDstForm({ appContext }) {
   }, [id, appContext]);
   const [formData, setFormData] = useState({
     legalName: "",
+    fullLegalNameOfDst: "",
     sponsorName: "",
     numberOfProperties: "",
     numberOfUnits: "",
+    dstPopertiesSector: "",
+    offeringEquity: "",
+    offeringDebt: "",
+    percentRetainedBySponsor: "",
+    totalUnitsInPortfolio: "",
+    states: "",
+    min1031Investment: "",
+    msa: "",
+    generalLocation: "",
+    dstPropertiesStyle: "",
+    dstPropertiesClass: "",
+    numberOfProperties: "",
+    percentRetainedBySponsor: "",
+    totalUnitsnPortfolio: "",
+    yearPropertiesBuilt: "",
+    TotalDstReserves: "",
+    purchasePrice: "",
+    appraisedValue: "",
+    yearNetOperatingIncome: "",
+    yearEffectiveGrossRevenue: "",
+    loanTerm: "",
+    interestOnlyPeriod: "",
+    fixedVariable: "",
+    loanRate: "",
+    lender: "",
+    currentDstOccupancy: "",
+    averageRemainingLeaseDuration: "",
+    upreit: "",
+    PPMRiskFactorsPage: "",
+    useOfProceedsPage: "",
+    assumptionsPage: "",
+    cashFlowPage: "",
+    DSTOfferingStrengthsAndOpportunities: "",
+    DSTOfferingWeaknessesAndThreats: "",
+    syndicationSponsorAcquisitionCosts: "",
+    costs: "",
+    brokerDealerDueDiligenceCosts: "",
+    managingBD: "",
+    TransactionCommission: "",
+    FinancingFee: "",
+    otherFee: "",
+    thirdPartyClosingCosts: "",
+    othergeneralOfferingNotes: "",
   });
   const [isSubmit, setIsSubmit] = useState(false);
 
@@ -64,15 +109,68 @@ export default function AddDstForm({ appContext }) {
   const handleReset = () => {
     setFormData({
       legalName: "",
+      fullLegalNameOfDst: "",
       sponsorName: "",
       numberOfProperties: "",
       numberOfUnits: "",
+      dstPopertiesSector: "",
+      offeringEquity: "",
+      offeringDebt: "",
+      percentRetainedBySponsor: "",
+      totalUnitsInPortfolio: "",
+      states: "",
+      min1031Investment: "",
+      msa: "",
+      generalLocation: "",
+      dstPropertiesStyle: "",
+      dstPropertiesClass: "",
+      numberOfProperties: "",
+      percentRetainedBySponsor: "",
+      totalUnitsnPortfolio: "",
+      yearPropertiesBuilt: "",
+      TotalDstReserves: "",
+      purchasePrice: "",
+      appraisedValue: "",
+      yearNetOperatingIncome: "",
+      yearEffectiveGrossRevenue: "",
+      loanTerm: "",
+      interestOnlyPeriod: "",
+      fixedVariable: "",
+      loanRate: "",
+      lender: "",
+      currentDstOccupancy: "",
+      averageRemainingLeaseDuration: "",
+      upreit: "",
+      PPMRiskFactorsPage: "",
+      useOfProceedsPage: "",
+      assumptionsPage: "",
+      cashFlowPage: "",
+      DSTOfferingStrengthsAndOpportunities: "",
+      DSTOfferingWeaknessesAndThreats: "",
+      syndicationSponsorAcquisitionCosts: "",
+      costs: "",
+      brokerDealerDueDiligenceCosts: "",
+      managingBD: "",
+      TransactionCommission: "",
+      FinancingFee: "",
+      otherFee: "",
+      thirdPartyClosingCosts: "",
+      othergeneralOfferingNotes: "",
     });
+  };
+
+  const splitCamelCase = (word) => {
+    const words = word.split(/(?=[A-Z])/);
+    const capitalizedWords = words.map(
+      (word) => word.charAt(0).toUpperCase() + word.slice(1)
+    );
+    const result = capitalizedWords.join(" ");
+    return result;
   };
   return (
     <Card sx={{ minWidth: 275 }}>
       <ThemeProvider theme={defaultTheme}>
-        <Container component="main" maxWidth="md">
+        <Container component="main">
           <CssBaseline />
           <Box
             component="form"
@@ -85,45 +183,22 @@ export default function AddDstForm({ appContext }) {
               alignItems: "center",
             }}
           >
-            <TextField
-              value={formData.legalName}
-              margin="normal"
-              fullWidth
-              name="legalName"
-              label="Legal Name"
-              placeholder="Legal Name"
-              onChange={handleChange}
-            />
-
-            <TextField
-              value={formData.sponsorName}
-              margin="normal"
-              fullWidth
-              name="sponsorName"
-              label="Sponsor Name"
-              placeholder="Sponsor Name"
-              onChange={handleChange}
-            />
-            <TextField
-              value={formData.numberOfProperties}
-              margin="normal"
-              fullWidth
-              name="numberOfProperties"
-              label="Number of Properties"
-              placeholder="Number of Properties"
-              onChange={handleChange}
-              type="number"
-            />
-            <TextField
-              value={formData.numberOfUnits}
-              margin="normal"
-              fullWidth
-              name="numberOfUnits"
-              label="Number of Units"
-              placeholder="Number of Units"
-              onChange={handleChange}
-              type="number"
-            />
+            <Grid container sx={{ p: 2, mt: 1 }} spacing={2}>
+              {Object.entries(formData).map(([key, value]) => (
+                <Grid item xs={4} className="Grid-Gap">
+                  <TextField
+                    key={key}
+                    size="small"
+                    value={value}
+                    margin="normal"
+                    fullWidth
+                    name={key}
+                    label={splitCamelCase(key)}
+                    onChange={handleChange}
+                  />
+                </Grid>
+              ))}
+            </Grid>
             <div style={{ display: "flex", columnGap: "20px" }}>
               <Button
                 onClick={handleAddData}
@@ -132,7 +207,7 @@ export default function AddDstForm({ appContext }) {
                 sx={{ mt: 3, mb: 2 }}
                 className="buttonStyle"
               >
-                {id ? "Update" : "Add"}
+                {id ? "Update" : "Save"}
               </Button>
               <Button
                 onClick={handleReset}

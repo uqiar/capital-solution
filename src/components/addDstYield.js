@@ -16,7 +16,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import Divider from "@mui/material/Divider";
 import { toast } from "react-toastify";
 import "../css/button.css";
-import Grid from "@mui/material/Grid";
 
 export default function BasicTable({ appContext }) {
   let { id } = useParams();
@@ -58,108 +57,9 @@ export default function BasicTable({ appContext }) {
     copyFormData[index].value = e.target.value;
     setFormData(copyFormData);
   };
+  console.log(formData, "formData");
   return (
     <>
-      <Card sx={{ mb: 2 }}>
-        <Grid container sx={{ p: 2 }} spacing={3}>
-          <Grid item xs={4}>
-            <TextField
-              size="small"
-              // value={formData.propertyName}
-              margin="normal"
-              fullWidth
-              name="fullLegalNameOfDst"
-              label={"Full legal name of DST"}
-              placeholder={"Full legal name of DST"}
-              // onChange={(e) => handleChange(e)}
-            />
-          </Grid>
-          <Grid item xs={4}>
-            <TextField
-              size="small"
-              // value={formData.propertyName}
-              margin="normal"
-              fullWidth
-              name="nameOfSponsor"
-              label={"Name of Sponsor"}
-              placeholder={"Name of sponsor"}
-              // onChange={(e) => handleChange(e)}
-            />
-          </Grid>
-          <Grid item xs={4}>
-            <TextField
-              size="small"
-              // value={formData.propertyName}
-              margin="normal"
-              fullWidth
-              name="dstPopertiesSector"
-              label={"DST properties Sector"}
-              placeholder={"DST properties Sector"}
-              // onChange={(e) => handleChange(e)}
-            />
-          </Grid>
-          <Grid item xs={4} className="Grid-Gap">
-            <TextField
-              size="small"
-              // value={formData.propertyName}
-              margin="normal"
-              fullWidth
-              name="offeringEquity"
-              label={"Offering Equity"}
-              placeholder={"Offering equity"}
-              // onChange={(e) => handleChange(e)}
-            />
-          </Grid>
-          <Grid item xs={4} className="Grid-Gap">
-            <TextField
-              size="small"
-              // value={formData.propertyName}
-              margin="normal"
-              fullWidth
-              name="offeringDebt"
-              label={"Offering Debt"}
-              placeholder={"Offering debt"}
-              // onChange={(e) => handleChange(e)}
-            />
-          </Grid>
-          <Grid item xs={4} className="Grid-Gap">
-            <TextField
-              size="small"
-              // value={formData.propertyName}
-              margin="normal"
-              fullWidth
-              name="percentRetainedBySponsor"
-              label={"Percent Retained By Sponsor"}
-              placeholder={"Percent retained by sponsor"}
-              // onChange={(e) => handleChange(e)}
-            />
-          </Grid>
-          <Grid item xs={4} className="Grid-Gap">
-            <TextField
-              size="small"
-              // value={formData.propertyName}
-              margin="normal"
-              fullWidth
-              name="totalUnitsInPortfolio"
-              label={"Total Units in Portfolio"}
-              placeholder={"Total units in portfolio"}
-              // onChange={(e) => handleChange(e)}
-            />
-          </Grid>
-          <Grid item xs={4} className="Grid-Gap">
-            <TextField
-              size="small"
-              // value={formData.propertyName}
-              margin="normal"
-              fullWidth
-              name="states"
-              label={"States"}
-              placeholder={"States"}
-              // onChange={(e) => handleChange(e)}
-            />
-          </Grid>
-        </Grid>
-      </Card>
       <TableContainer component={Paper}>
         <Table aria-label="simple table">
           <TableHead>
@@ -189,7 +89,7 @@ export default function BasicTable({ appContext }) {
             onClick={() => setShowAddEditModal(true)}
             type="submit"
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            sx={{ mt: 3, mb: 2, ml: 2 }}
             className="buttonStyle"
           >
             {id ? "Update" : "Add"}

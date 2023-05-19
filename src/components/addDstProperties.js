@@ -95,7 +95,7 @@ export default function BasicTable({ appContext }) {
           onClick={() => setShowAddEditModal(true)}
           type="submit"
           variant="contained"
-          sx={{ mt: 3, mb: 2 }}
+          sx={{ mt: 3, mb: 2, ml: 2 }}
           className="buttonStyle"
         >
           Add

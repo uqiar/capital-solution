@@ -7,3 +7,33 @@
 .Grid-Gap {
   padding-top: 0px !important;
 }
+.Dsts-Manage {
+  font-size: 18px;
+  cursor: pointer;
+  color: #a48d31;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  display: list-item;
+}
+.Dsts-Manage:hover {
+  color: #695a1f;
+}
+.Dst-align {
+  margin-left: 15px;
+}
+.login-field {
+  display: flex;
+  flex-direction: column;
+}
+.login-email-field {
+  background-color: #fff;
+  width: 400px;
+}
+.login-signin-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home-link {
+  text-decoration: none;
+}

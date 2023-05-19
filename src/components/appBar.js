@@ -2,7 +2,7 @@ import * as React from "react";
 import { styled } from "@mui/material/styles";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
+
 import IconButton from "@mui/material/IconButton";
 import Badge from "@mui/material/Badge";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -41,6 +41,9 @@ export default function AppBarComponent({ open, setOpen }) {
       <Toolbar
         sx={{
           pr: "24px", // keep right padding when drawer closed
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "end",
         }}
       >
         <IconButton
@@ -55,15 +58,7 @@ export default function AppBarComponent({ open, setOpen }) {
         >
           <MenuIcon />
         </IconButton>
-        <Typography
-          component="h1"
-          variant="h6"
-          color="inherit"
-          noWrap
-          sx={{ flexGrow: 1 }}
-        >
-          <img src="/1031logo.png" style={{ height: "35px" }} />
-        </Typography>
+
         <IconButton color="inherit" onClick={handleLogout}>
           <Logout />
         </IconButton>

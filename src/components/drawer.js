@@ -23,7 +23,8 @@ import AddIcon from "@mui/icons-material/Add";
 import DnsIcon from "@mui/icons-material/Dns";
 import HomeIcon from "@mui/icons-material/Home";
 import { makeStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Typography from "@mui/material/Typography";
 
 const drawerWidth = 240;
 
@@ -67,18 +68,19 @@ const useStyles = makeStyles({
 });
 
 export default function DrawerComponent({ open, setOpen }) {
+  const navigate = useNavigate();
   const toggleDrawer = () => {
     setOpen(!open);
   };
   const classes = useStyles();
 
   const [list, setList] = React.useState([
-    {
-      title: "Main Menu",
-      icon: <DnsIcon />,
-      isOpen: true,
-      subMenu: [{ title: "Home", page: "/", icon: <HomeIcon /> }],
-    },
+    // {
+    //   title: "Main Menu",
+    //   icon: <DnsIcon />,
+    //   isOpen: true,
+    //   subMenu: [{ title: "Home", page: "/", icon: <HomeIcon /> }],
+    // },
     {
       title: "DSTs",
       icon: <InboxIcon />,
@@ -114,12 +116,35 @@ export default function DrawerComponent({ open, setOpen }) {
         }}
         className={classes.sidebarTop}
       >
-        <IconButton onClick={toggleDrawer}>
-          <ChevronLeftIcon className={classes.sidebarTopIcon} />
-        </IconButton>
+        <Typography
+          component="h1"
+          variant="h6"
+          color="inherit"
+          noWrap
+          sx={{ flexGrow: 1, pl: 2, pt: 2 }}
+        >
+          <img src="/1031logo.png" style={{ height: "35px" }} />
+        </Typography>
       </Toolbar>
       <Divider />
-      <List component="nav">
+      <List component="nav" sx={{ mt: 1 }}>
+        <Link to="/" className="home-link">
+          <ListItemButton sx={{ pb: 0, pb: 0 }}>
+            <ListItemIcon style={{ color: "#fff" }}>
+              <HomeIcon />
+            </ListItemIcon>
+            <p
+              className={classes.sideBarText}
+              style={{
+                marginBottom: "9px",
+                marginTop: "9px",
+                fontSize: "17px",
+              }}
+            >
+              Home
+            </p>
+          </ListItemButton>
+        </Link>
         {list.map((opt, key) => {
           return (
             <>
